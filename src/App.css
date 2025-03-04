@@ -1,0 +1,54 @@
+/* grid layout */
+
+.app-cont {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "nav text intro";
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-cont .nav {
+  grid-area: nav;
+}
+
+.app-cont .nav-box {
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  left: 0;
+  align-self: start;
+  height: 100vh;
+}
+
+.app-cont .text {
+  grid-area: text;
+}
+
+.app-cont .intro {
+  grid-area: intro;
+}
+
+/* adaptive layout */
+
+/* no intro sidebar */
+@media (max-width: 960px) {
+  .app-cont {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "nav text";
+  }
+}
+
+/* no sidebars */
+@media (max-width: 640px) {
+  .app-cont {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas:
+      "nav"
+      "text";
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "isa_reader",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build-server": "vite build --mode server",
+    "build-offline": "vite build --mode offline",
+    "build-gh-pages": "vite build --mode gh-pages",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.4"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0",
+    "vite": "^6.1.0",
+    "vite-plugin-singlefile": "^2.1.0",
+    "vite-plugin-solid": "^2.11.0",
+    "vitest": "^3.0.7"
+  }
+}

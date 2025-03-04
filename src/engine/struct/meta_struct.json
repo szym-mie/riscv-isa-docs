@@ -1,0 +1,42 @@
+{
+    "@struct": "meta",
+    "@of": "obj",
+    "@extra": true,
+    "authors": {
+        "@of": "[]",
+        "@item": {
+            "@of": "&[]",
+            "@ref": "@ext.authors",
+            "@extra": true
+        }
+    },
+    "ref": {
+        "@of": "&{}",
+        "@ref": "@ext.refs",
+        "@extra": true
+    },
+    "since": {
+        "@of": "str",
+        "@extra": true
+    },
+    "wip": {
+        "@of": "num",
+        "@range": [
+            0,
+            100
+        ],
+        "@extra": true
+    },
+    "not_sure": {
+        "@of": "str",
+        "@extra": true
+    },
+    "fix_me": {
+        "@of": "str",
+        "@extra": true
+    },
+    "-toc": {
+        "@of": "bool",
+        "@default": false
+    }
+}

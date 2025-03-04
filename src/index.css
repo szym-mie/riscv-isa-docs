@@ -1,0 +1,488 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+:root {
+  font-family: 'IBM Plex Sans', Geneva, Verdana, sans-serif;
+  color: var(--col-tx-1);
+  background-color: var(--col-bg-1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* text variant */
+    --col-tx-1: hsl(260, 10%, 10%);
+    --col-tx-2: hsl(260, 4%, 90%);
+    --col-tx-3: hsl(260, 6%, 40%);
+    /* point-of-focus */
+    --col-pf-1: hsl(260, 70%, 50%);
+    --col-pf-2: hsla(260, 70%, 50%, 50%);
+    /* background */
+    --col-bg-1: hsl(260, 10%, 90%);
+    --col-bg-2: hsl(260, 8%, 75%);
+    --col-bg-3: hsl(260, 10%, 20%);
+    --col-bg-4: hsl(260, 6%, 65%);
+    /* decor */
+    --col-de-1: hsl(260, 20%, 50%);
+    --col-de-2: hsla(0, 0%, 0%, 20%);
+    --col-de-3: hsla(0, 0%, 0%, 40%);
+    /* extra text variant */
+    --col-xt-1: hsl(160, 55%, 35%);
+    --col-xt-2: hsl(20, 55%, 35%);
+    --col-xt-3: hsl(210, 55%, 35%);
+    --col-xt-4: hsl(350, 55%, 35%);
+    /* extra background */
+    --col-xb-1: hsla(160, 80%, 30%, 60%);
+    --col-xb-2: hsla(20, 80%, 30%, 60%);
+    --col-xb-3: hsla(210, 80%, 30%, 60%);
+    --col-xb-4: hsla(350, 80%, 30%, 60%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* text variant */
+    --col-tx-1: hsl(260, 20%, 80%);
+    --col-tx-2: hsl(260, 20%, 80%);
+    --col-tx-3: hsl(260, 6%, 60%);
+    /* point-of-focus */
+    --col-pf-1: hsl(260, 50%, 50%);
+    --col-pf-2: hsla(260, 50%, 50%, 50%);
+    /* background */
+    --col-bg-1: hsl(260, 4%, 15%);
+    --col-bg-2: hsl(260, 6%, 12%);
+    --col-bg-3: hsl(260, 8%, 13%);
+    --col-bg-4: hsl(260, 6%, 10%);
+    /* decor */
+    --col-de-1: hsl(260, 20%, 20%);
+    --col-de-2: hsla(0, 0%, 0%, 30%);
+    --col-de-3: hsla(0, 0%, 0%, 60%);
+    /* extra text variant */
+    --col-xt-1: hsl(160, 55%, 55%);
+    --col-xt-2: hsl(20, 55%, 55%);
+    --col-xt-3: hsl(210, 55%, 55%);
+    --col-xt-4: hsl(350, 55%, 55%);
+    /* extra background */
+    --col-xb-1: hsla(160, 40%, 40%, 15%);
+    --col-xb-2: hsla(20, 40%, 40%, 15%);
+    --col-xb-3: hsla(210, 40%, 40%, 15%);
+    --col-xb-4: hsla(350, 40%, 40%, 15%);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*::selection {
+  background-color: var(--col-pf-2);
+}
+
+a {
+  color: var(--col-tx-1);
+}
+
+a:hover {
+  color: var(--col-pf-1);
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+h3 {
+  font-size: large;
+}
+
+h4 {
+  font-size: larger;
+}
+
+h5 {
+  font-size: larger;
+}
+
+h6 {
+  font-size: larger;
+}
+
+/* colors */
+
+.ct-1 {
+  color: var(--col-tx-1);
+}
+
+.ct-2 {
+  color: var(--col-tx-2);
+}
+
+.ct-3 {
+  color: var(--col-tx-3);
+}
+
+.bg-2 {
+  background-color: var(--col-bg-2);
+}
+
+.bg-3 {
+  background-color: var(--col-bg-3);
+}
+
+.cf {
+  color: var(--col-tx-2);
+  background-color: var(--col-pf-1);
+}
+
+.cx-1 {
+  color: var(--col-xt-1);
+  background-color: var(--col-xb-1);
+}
+
+.cx-2 {
+  color: var(--col-xt-2);
+  background-color: var(--col-xb-2);
+}
+
+.cx-3 {
+  color: var(--col-xt-3);
+  background-color: var(--col-xb-3);
+}
+
+.cx-4 {
+  color: var(--col-xt-4);
+  background-color: var(--col-xb-4);
+}
+
+/* spacing */
+
+.sp-10 {
+  padding: 0.5em 1em;
+}
+
+.sp-10-h {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.sp-10-v {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.sp-02 {
+  padding: 0.2em;
+}
+
+.sp-02-h {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.sp-02-v {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+.vo-02>*+* {
+  margin-left: 0.2em;
+}
+
+.vo-05>*+* {
+  margin-left: 0.5em;
+}
+
+.vo-10>*+* {
+  margin-left: 1em;
+}
+
+.vo-15>*+* {
+  margin-left: 1.5em;
+}
+
+.vo-20>*+* {
+  margin-left: 2em;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-v {
+  display: flex;
+  align-items: center;
+}
+
+.w-r100 {
+  width: 100%;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-02-v {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.m-05-v {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.m-02-h {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.m-05-h {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.m-05-u {
+  margin-top: 0.5em;
+}
+
+.m-05-d {
+  margin-bottom: 0.5em;
+}
+
+.m-10-h {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+/* borders */
+
+.br-10 {
+  border-radius: 1em;
+}
+
+.bt {
+  border-collapse: collapse;
+}
+
+.bd-p1 {
+  border: 1px solid var(--col-tx-3);
+}
+
+.bd-p1-l {
+  border-left: 1px solid var(--col-tx-3);
+}
+
+.bd-p1-r {
+  border-right: 1px solid var(--col-tx-3);
+}
+
+.bd-p1-u {
+  border-top: 1px solid var(--col-tx-3);
+}
+
+.bd-p1-d {
+  border-bottom: 1px solid var(--col-tx-3);
+}
+
+.bl-02 {
+  border: 0.2em solid var(--col-pf-2);
+}
+
+.bb-02 {
+  box-shadow: 0 0 0em 0.2em var(--col-pf-2);
+}
+
+.bb-02:hover {
+  box-shadow: 0 0 0em 0.3em var(--col-pf-2);
+}
+
+/* table */
+
+.tf {
+  table-layout: fixed;
+}
+
+/* bars */
+
+.vb-p4 {
+  border-left: var(--col-de-1) 4px solid;
+}
+
+.hb-p4 {
+  border-bottom: var(--col-de-1) 4px solid;
+}
+
+/* fonts */
+
+.sans {
+  font-family: 'IBM Plex Sans', Geneva, Verdana, sans-serif;
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', Courier, monospace;
+  font-weight: 500;
+}
+
+.hint {
+  color: var(--col-tx-3);
+}
+
+.hint {
+  color: var(--col-tx-3);
+}
+
+.fs-sm {
+  font-size: smaller;
+}
+
+.fs-la {
+  font-size: larger;
+}
+
+.fs-xl {
+  font-size: x-large;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.sym-material {
+  font-family: 'Material Symbols Outlined';
+  vertical-align: bottom;
+}
+
+.sym-material.fw-300 {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.sym-material.fw-400 {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.sym-material.fw-500 {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.sym-material.fw-600 {
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+/* decor */
+
+/* adds subtle vertical raster pattern at the bottom of element */
+.d-rasterv {
+  background-image: url('/rasterv.png');
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-blend-mode: soft-light;
+}
+
+/* light colored shadow under element */
+.d-lsha {
+  box-shadow: 0 0 2em -1em var(--col-de-1);
+}
+
+/* darkening hbar at the bottom of element */
+.d-hbdark-p4 {
+  box-shadow: 0 -4px 0 0 var(--col-de-2) inset;
+}
+
+/* no user select */
+.d-no-usel {
+  user-select: none;
+}
+
+/* interactive */
+
+.i-click {
+  cursor: pointer;
+  user-select: none;
+}
+
+.h-font-l-1,
+.h-font-l-2 {
+  font-size: large;
+  transition: font-size 0.3s;
+}
+
+.h-font-l-1:hover,
+.h-font-l-2:hover {
+  font-size: x-large;
+}
+
+.h-font-l-1:active {
+  color: var(--col-pf-1);
+}
+
+.h-font-l-1:active * {
+  color: var(--col-pf-1);
+}
+
+.h-font-l-2:active {
+  color: var(--col-tx-2);
+  background-color: var(--col-pf-1);
+}
+
+.h-font-l-2:active * {
+  color: var(--col-tx-2);
+}
+
+/* fixed position */
+
+.fix {
+  position: fixed;
+}
+
+.pl-0 {
+  left: 0;
+}
+
+.pr-0 {
+  right: 0;
+}
+
+.pu-0 {
+  top: 0;
+}
+
+.pd-0 {
+  bottom: 0;
+}
+
+/* flex */
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-c {
+  align-items: center;
+}

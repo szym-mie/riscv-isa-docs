@@ -1,0 +1,552 @@
+{
+    "title": "RISC-V ISA",
+    "info": "DUMMY INFO",
+    "refs": [
+        {
+            "text": "RISC-V ISA table (ISA layouts)",
+            "type": "main",
+            "link": "https://five-embeddev.com/riscv-user-isa-manual/Priv-v1.12/instr-table_00.svg"
+        },
+        {
+            "text": "RISC-V ISA cheatsheet (ISA details)",
+            "type": "main",
+            "link": "https://projectf.io/posts/riscv-cheat-sheet/"
+        },
+        {
+            "text": "RISC-V ISA infographic",
+            "type": "extra",
+            "link": "https://commons.wikimedia.org/wiki/File:RV32IMAC_Instruction_Set.svg"
+        }
+    ],
+    "authors": {
+        "szym-mie": {
+            "full_name": "Szymon Miękina",
+            "picture": null,
+            "email": "szym.mie@gmail.com"
+        }
+    },
+    "-meta": {
+        "authors": [
+            "szym-mie"
+        ],
+        "wip": 50
+    },
+    "isas": {
+        "base": {
+            "name": "Base",
+            "-meta": {
+                "-toc": true,
+                "wip": 30
+            },
+            "layouts": {
+                "r_type": {
+                    "name": "R-type",
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rd",
+                            "type": "reg",
+                            "maps": [
+                                "dst",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "funct3",
+                            "type": "func",
+                            "maps": [
+                                0
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    14
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs1",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    15,
+                                    19
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs2",
+                            "type": "reg.src",
+                            "maps": [
+                                "src",
+                                1
+                            ],
+                            "range": [
+                                [
+                                    20,
+                                    24
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "funct7",
+                            "type": "func",
+                            "maps": [
+                                1
+                            ],
+                            "range": [
+                                [
+                                    25,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "i_type": {
+                    "name": "I-type",
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rd",
+                            "type": "reg",
+                            "maps": [
+                                "dst",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "funct3",
+                            "type": "func",
+                            "maps": [
+                                0
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    14
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs1",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    15,
+                                    19
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[11:0]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    0,
+                                    11
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    20,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "s_type": {
+                    "name": "S-type",
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[4:0]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    0,
+                                    4
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "funct3",
+                            "type": "func",
+                            "maps": [
+                                0
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    14
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs1",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    15,
+                                    19
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs2",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                1
+                            ],
+                            "range": [
+                                [
+                                    20,
+                                    24
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[11:5]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    5,
+                                    11
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    25,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "b_type": {
+                    "name": "B-type",
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[4:1|11]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    11,
+                                    11
+                                ],
+                                [
+                                    1,
+                                    4
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "funct3",
+                            "type": "func",
+                            "maps": [
+                                0
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    14
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs1",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    15,
+                                    19
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rs2",
+                            "type": "reg",
+                            "maps": [
+                                "src",
+                                1
+                            ],
+                            "range": [
+                                [
+                                    20,
+                                    24
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[12|10:5]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    5,
+                                    10
+                                ],
+                                [
+                                    12,
+                                    12
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    25,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "u_type": {
+                    "name": "U-type",
+                    "-meta": {
+                        "not_sure": "imm[31:12] mapping, what about bits 11:0?"
+                    },
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rd",
+                            "type": "reg",
+                            "maps": [
+                                "dst",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[31:12]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    12,
+                                    31
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "j_type": {
+                    "name": "J-type",
+                    "-meta": {
+                        "not_sure": "imm[20|10:1|11|19:12] mapping, what about bit 0?"
+                    },
+                    "fields": [
+                        {
+                            "id": "opcode",
+                            "type": "opcode",
+                            "range": [
+                                [
+                                    0,
+                                    6
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "rd",
+                            "type": "reg",
+                            "maps": [
+                                "dst",
+                                0
+                            ],
+                            "range": [
+                                [
+                                    7,
+                                    11
+                                ]
+                            ]
+                        },
+                        {
+                            "id": "imm[20|10:1|11|19:12]",
+                            "type": "imm",
+                            "maps": [
+                                [
+                                    12,
+                                    19
+                                ],
+                                [
+                                    11,
+                                    11
+                                ],
+                                [
+                                    1,
+                                    10
+                                ],
+                                [
+                                    20,
+                                    20
+                                ]
+                            ],
+                            "range": [
+                                [
+                                    12,
+                                    31
+                                ]
+                            ]
+                        }
+                    ]
+                }
+            },
+            "instructions": {
+                "lui": {
+                    "name": "Load Upper Immediate",
+                    "info": "",
+                    "act": [
+                        "rd = imm << 12"
+                    ],
+                    "-meta": {},
+                    "layout": "u_type",
+                    "opcode": "0110111"
+                },
+                "auipc": {
+                    "name": "Add Upper Immediate to PC",
+                    "info": "",
+                    "act": [
+                        "rd = pc + (imm << 12)"
+                    ],
+                    "-meta": {},
+                    "layout": "u_type",
+                    "opcode": "0010111"
+                },
+                "jal": {
+                    "name": "Jump and Link",
+                    "info": "",
+                    "act": [
+                        "rd = pc+4",
+                        "pc = pc+imm"
+                    ],
+                    "-meta": {},
+                    "layout": "j_type",
+                    "opcode": "1101111"
+                },
+                "jalr": {
+                    "name": "Jump and Link Register",
+                    "info": "",
+                    "act": [
+                        "rd = pc+4",
+                        "pc = rs1+imm"
+                    ],
+                    "-meta": {},
+                    "layout": "i_type",
+                    "opcode": "1100111",
+                    "func": [
+                        "000"
+                    ]
+                },
+                "beq": {
+                    "name": "Branch Equal",
+                    "info": "",
+                    "act": [
+                        "if (rs1 == rs2) pc = pc+imm"
+                    ],
+                    "-meta": {},
+                    "layout": "b_type",
+                    "opcode": "1100011",
+                    "func": [
+                        "000"
+                    ]
+                }
+            }
+        }
+    }
+}
