@@ -35,7 +35,6 @@
         "base": {
             "name": "Base",
             "-meta": {
-                "-toc": true,
                 "wip": 30
             },
             "layouts": {

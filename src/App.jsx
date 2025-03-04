@@ -4,6 +4,16 @@ import './App.css';
 import Icon from './engine/components/core/Icon';
 import Document from './engine/components/Document';
 
+import { StructParser } from './engine/struct/struct';
+import metaStructInfo from './engine/struct/meta_struct.json';
+import docStructInfo from './engine/struct/doc_struct.json'
+
+const parser = new StructParser({});
+const metaStruct = parser.create(metaStructInfo);
+const docStruct = parser.create(docStructInfo);
+
+console.log(docStruct);
+
 const App = () => (
   <>
     <div class='app-cont'>
@@ -19,6 +29,5 @@ const App = () => (
     </div>
   </>
 );
-
 
 export default App;

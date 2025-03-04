@@ -17,9 +17,9 @@ const BitTable = (props) => {
         </thead>
         <tbody>
           <tr class='marker'>
-            <For each={columns()}>
+            {/* <For each={columns()}>
               {(index, _) => (<td class='bd-p1'>{index}</td>)}
-            </For>
+            </For> */}
           </tr>
           <tr class='range'>
             <For each={columns()}>
