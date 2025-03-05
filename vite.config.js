@@ -15,7 +15,7 @@ const buildOfflineDist = {
   }
 };
 const buildGHPagesDist = {
-  base: '/<YOUR_REPO>/',
+  base: '/riscv-isa-docs/',
   plugins: [solid()],
   build: {
     outDir: 'dist_gh_pages'
