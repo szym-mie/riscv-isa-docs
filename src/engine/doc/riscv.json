@@ -1,6 +1,6 @@
 {
     "title": "RISC-V ISA",
-    "info": "DUMMY INFO",
+    "info": "TODO: create this documents description\n|! warn |\n| This document is being used for testing purposes. \n| Expect breaking changes, a lot of nonsense and total lack of any cohesion.\n",
     "refs": [
         {
             "text": "RISC-V ISA table (ISA layouts)",
@@ -22,6 +22,7 @@
         "szym-mie": {
             "full_name": "Szymon Miękina",
             "picture": null,
+            "github": "szym-mie",
             "email": "szym.mie@gmail.com"
         }
     },
