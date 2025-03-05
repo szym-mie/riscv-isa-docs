@@ -1,4 +1,6 @@
-## Usage
+# RISC-V ISA DOCS
+
+## Development
 
 ```bash
 $ npm install # or pnpm install or yarn install
