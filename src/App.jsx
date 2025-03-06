@@ -1,18 +1,10 @@
-import doc from './engine/doc/riscv.json';
+// import doc from './engine/doc/riscv.json';
+import doc from './engine/doc/riscv.yaml?raw';
 
 import './App.css';
 import Icon from './engine/components/core/Icon';
 import Document from './engine/components/Document';
-
-import { StructParser } from './engine/struct/struct';
-import metaStructInfo from './engine/struct/meta_struct.json';
-import docStructInfo from './engine/struct/doc_struct.json'
-
-const parser = new StructParser({});
-const metaStruct = parser.create(metaStructInfo);
-const docStruct = parser.create(docStructInfo);
-
-console.log(docStruct);
+import YAML from 'yaml';
 
 const App = () => (
   <>
@@ -23,7 +15,7 @@ const App = () => (
         </div>
       </div>
       <div class='text sp-10'>
-        <Document doc={doc} />
+        <Document doc={YAML.parse(doc)} />
       </div>
       <div class='intro sp-10'></div>
     </div>

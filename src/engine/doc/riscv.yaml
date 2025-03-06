@@ -1,0 +1,215 @@
+title: RISC-V ISA
+info: |
+  TODO: create this documents description
+  |! warn |
+  | This document is being used for testing purposes. 
+  | Expect breaking changes, a lot of nonsense and just plain errors.
+refs:
+  isa_layouts: &ref_isa_layouts
+    name: RISC-V ISA table (ISA layouts)
+    type: main
+    link: https://five-embeddev.com/riscv-user-isa-manual/Priv-v1.12/instr-table_00.svg
+  isa_cheatsheet: &ref_isa_cheatsheet
+    name: RISC-V ISA cheatsheet (ISA details)
+    type: main
+    link: https://projectf.io/posts/riscv-cheat-sheet/
+  isa_infographic: &ref_isa_infographic
+    name: RISC-V ISA infographic
+    type: extra
+    link: https://commons.wikimedia.org/wiki/File:RV32IMAC_Instruction_Set.svg
+authors:
+  szym-mie: &szym-mie
+    full_name: Szymon Miękina
+    picture: null
+    github: szym-mie
+    email: szym.mie@gmail.com
+_meta:
+  authors:
+    - *szym-mie
+  wip: 50%
+modules:
+  base:
+    name: Base
+    _meta:
+      wip: 30%
+      ref: *ref_isa_layouts
+    layouts:
+      r_type: &layout_r_type
+        name: R-type
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: rd
+            type: reg
+            maps: [dst, 0]
+            range: [[7, 11]]
+          - id: funct3
+            type: func
+            maps: [0]
+            range: [[12, 14]]
+          - id: rs1
+            type: reg
+            maps: [src, 0]
+            range: [[15, 19]]
+          - id: rs2
+            type: reg.src
+            maps: [src, 1]
+            range: [[20, 24]]
+          - id: funct7
+            type: func
+            maps: [1]
+            range: [[25, 31]]
+      i_type: &layout_i_type
+        name: I-type
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: rd
+            type: reg
+            maps: [dst, 0]
+            range: [[7, 11]]
+          - id: funct3
+            type: func
+            maps: [0]
+            range: [[12, 14]]
+          - id: rs1
+            type: reg
+            maps: [src, 0]
+            range: [[15, 19]]
+          - id: 'imm[11:0]'
+            type: imm
+            maps: [[0, 11]]
+            range: [[20, 31]]
+      s_type: &layout_s_type
+        name: S-type
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: 'imm[4:0]'
+            type: imm
+            maps: [[0, 4]]
+            range: [[7, 11]]
+          - id: funct3
+            type: func
+            maps: [0]
+            range: [[12, 14]]
+          - id: rs1
+            type: reg
+            maps: [src, 0]
+            range: [[15, 19]]
+          - id: rs2
+            type: reg
+            maps: [src, 1]
+            range: [[20, 24]]
+          - id: 'imm[11:5]'
+            type: imm
+            maps: [[5, 11]]
+            range: [[25, 31]]
+      b_type: &layout_b_type
+        name: B-type
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: 'imm[4:1|11]'
+            type: imm
+            maps: [[11, 11], [1, 4]]
+            range: [[7, 11]]
+          - id: funct3
+            type: func
+            maps: [0]
+            range: [[12, 14]]
+          - id: rs1
+            type: reg
+            maps: [src, 0]
+            range: [[15, 19]]
+          - id: rs2
+            type: reg
+            maps: [src, 1]
+            range: [[20, 24]]
+          - id: 'imm[12|10:5]'
+            type: imm
+            maps: [[5, 10], [12, 12]]
+            range: [[25, 31]]
+      u_type: &layout_u_type
+        name: U-type
+        _meta:
+          not_sure: 'imm[31:12] mapping, what about bits 11:0?'
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: rd
+            type: reg
+            maps: [dst, 0]
+            range: [[7, 11]]
+          - id: 'imm[31:12]'
+            type: imm
+            maps: [[12, 31]]
+            range: [[12, 31]]
+      j_type: &layout_j_type
+        name: J-type
+        _meta:
+          not_sure: 'imm[20|10:1|11|19:12] mapping, what about bit 0?'
+        fields:
+          - id: opcode
+            type: opcode
+            range: [[0, 6]]
+          - id: rd
+            type: reg
+            maps: [dst, 0]
+            range: [[7, 11]]
+          - id: 'imm[20|10:1|11|19:12]'
+            type: imm
+            maps: [[12, 19], [11, 11], [1, 10], [20, 20]]
+            range: [[12, 31]]
+    instructions:
+      lui:
+        name: Load Upper Immediate
+        info: ''
+        act:
+          - rd = imm << 12
+        _meta: {}
+        layout: *layout_u_type
+        opcode: 0b0110111
+      auipc:
+        name: Add Upper Immediate to PC
+        info: ''
+        act:
+          - rd = pc + (imm << 12)
+        _meta: {}
+        layout: *layout_u_type
+        opcode: 0b0010111
+      jal:
+        name: Jump and Link
+        info: ''
+        act:
+          - rd = pc+4
+          - pc = pc+imm
+        _meta: {}
+        layout: *layout_j_type
+        opcode: 0b1101111
+      jalr:
+        name: Jump and Link Register
+        info: ''
+        act:
+          - rd = pc+4
+          - pc = rs1+imm
+        _meta: {}
+        layout: *layout_i_type
+        opcode: 0b1100111
+        func:
+          - 0b000
+      beq:
+        name: Branch Equal
+        info: ''
+        act:
+          - if (rs1 == rs2) pc = pc+imm
+        _meta: {}
+        layout: *layout_b_type
+        opcode: 0b1100011
+        func:
+          - 0b000

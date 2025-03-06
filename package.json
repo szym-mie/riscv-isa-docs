@@ -12,7 +12,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "solid-js": "^1.9.4"
+    "solid-js": "^1.9.4",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "jsdom": "^26.0.0",

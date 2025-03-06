@@ -1,12 +1,13 @@
 import { createContext, useContext } from 'solid-js';
+import { Store } from '../entity/store';
 
 const DocumentContext = createContext();
 
 const DocumentProvider = (props) => {
-  const value = () => props.doc;
+  const store = new Store(props.obj);
 
   return (
-    <DocumentContext.Provider value={value()}>
+    <DocumentContext.Provider value={store}>
       {props.children}
     </DocumentContext.Provider>
   );

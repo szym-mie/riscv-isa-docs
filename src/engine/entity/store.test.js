@@ -1,5 +1,5 @@
 import { test, expect, beforeEach } from 'vitest';
-import { Store } from './store';
+import { Store, Entity } from './store';
 
 const testObject = {
   'authors': {
@@ -61,9 +61,11 @@ beforeEach(() => {
 });
 
 test('register simple entity', () => {
-  testStore.register('@.authors', 'Author', (_, v) => new Author(v.full_name, v.email));
+  const authorEntity = new Entity('author', '@.authors',
+    (_, v) => new Author(v.full_name, v.email));
+  testStore.register(authorEntity);
 
-  const actualAuthor = testStore.find('Author', 'szym-mie');
+  const actualAuthor = testStore.findOne('author', 'szym-mie');
   const expectedAuthor = testObject.authors['szym-mie'];
 
   expect(actualAuthor.name).toBe(expectedAuthor.full_name);
@@ -71,10 +73,15 @@ test('register simple entity', () => {
 });
 
 test('register complex entity', () => {
-  testStore.register('@.authors', 'Author', (_, v) => new Author(v.full_name, v.email));
-  testStore.register('@.posts', 'Post', (s, v) => new Post(v.title, s.find('Author', v.author)));
+  const authorEntity = new Entity('author', '@.authors',
+    (_, v) => new Author(v.full_name, v.email));
+  const postEntity = new Entity('post', '@.posts',
+    (s, v) => new Post(v.title, s.find('author', v.author)));
 
-  const actualAuthor = testStore.find('Post', 0).author;
+  testStore.register(authorEntity);
+  testStore.register(postEntity);
+
+  const actualAuthor = testStore.findOne('post', 0).author;
   const expectedAuthor = testObject.authors['szym-mie'];
 
   expect(actualAuthor.name).toBe(expectedAuthor.full_name);
@@ -82,8 +89,10 @@ test('register complex entity', () => {
 });
 
 test('throw on already registered', () => {
-  testStore.register('@.authors', 'Author', (_, v) => new Author(v.full_name, v.email));
+  const authorEntity = new Entity('author', '@.authors',
+    (_, v) => new Author(v.full_name, v.email));
   expect(() => {
-    testStore.register('@.posts', 'Author', (s, v) => new Post(v.title, s.find('Author', v.author)));
+    testStore.register(authorEntity);
+    testStore.register(authorEntity);
   }).toThrowError();
 });

@@ -10,21 +10,25 @@ class Store {
     return path.resolve(this.object);
   }
 
-  find(entityType, key) {
-    return this.entities[entityType][key];
+  findOne(entityName, key) {
+    return this.findAll(entityName)[key];
   }
 
-  register(pathText, entityType, entityProducer) {
-    if (this.entities[entityType] !== undefined) {
-      throw new Error('already registered entity ' + entityType)
+  findAll(entityName) {
+    return this.entities[entityName];
+  }
+
+  register(entity) {
+    if (this.entities[entity.name] !== undefined) {
+      throw new Error('already registered entity ' + entity.name)
     }
-    const path = new Path(pathText);
+    const path = new Path(entity.pathText);
     const object = this.resolve(path);
     const entities = {};
     for (const [key, val] of Object.entries(object)) {
-      entities[key] = entityProducer(this, val);
+      entities[key] = entity.entityProducer(this, val);
     }
-    this.entities[entityType] = entities;
+    this.entities[entity.name] = entities;
   }
 
   reset() {
@@ -32,4 +36,12 @@ class Store {
   }
 }
 
-export { Store };
+class Entity {
+  constructor(name, pathText, entityProducer) {
+    this.name = name;
+    this.pathText = pathText;
+    this.entityProducer = entityProducer;
+  }
+}
+
+export { Store, Entity };

@@ -9,7 +9,7 @@ const ISAInstruction = (props) => {
     <>
       <div>
         <p>Opcode: {obj().opcode}</p>
-        <p>Layout: {obj().layout}</p>
+        <p>Layout: {obj().layout.name}</p>
         <Block>{obj().info}</Block>
         <Code lang='state update'>{stateUpdateCode()}</Code>
       </div>
