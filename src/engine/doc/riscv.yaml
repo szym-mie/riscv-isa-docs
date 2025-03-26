@@ -3,7 +3,7 @@ info: |
   TODO: create this documents description
   |! warn |
   | This document is being used for testing purposes. 
-  | Expect breaking changes, a lot of nonsense and just plain errors.
+  | Expect breaking changes and errors.
 refs:
   isa_layouts: &ref_isa_layouts
     name: RISC-V ISA table (ISA layouts)
