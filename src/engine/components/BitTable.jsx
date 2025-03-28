@@ -12,8 +12,15 @@ const BitTable = (props) => {
       <table class='bit-table bt tf w-r100'>
         <thead>
           <tr class='index'>
-            <For each={indices()}>
-              {(index, _) => (<td>{index}</td>)}
+            <For each={columns()}>
+              {({ id, start, width }, _) => (
+                <td colspan={width}>
+                  <div class='index-pair sp-02-h'>
+                    <span>{start + width - 1}</span>
+                    <span>{start}</span>
+                  </div>
+                </td>
+              )}
             </For>
           </tr>
           <tr class='marker'>
