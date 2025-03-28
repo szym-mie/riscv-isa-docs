@@ -69,6 +69,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -158,6 +162,24 @@ h6 {
 }
 
 /* spacing */
+
+.s-01-v {
+  height: 0.1em;
+}
+
+.s-02-v {
+  height: 0.1em;
+}
+
+.sp-0-h {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sp-0-v {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .sp-10 {
   padding: 0.5em 1em;
@@ -254,9 +276,36 @@ h6 {
   margin-bottom: 0.5em;
 }
 
+.m-08-l {
+  margin-left: 0.8em;
+}
+
+.m-08-h {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
+}
+
 .m-10-h {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.m-15-l {
+  margin-left: 1.5em;
+}
+
+.m-15-h {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+.m-20-l {
+  margin-left: 2em;
+}
+
+.m-20-h {
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 /* borders */
@@ -338,6 +387,10 @@ h6 {
 
 .fs-sm {
   font-size: smaller;
+}
+
+.fs-md {
+  font-size: medium;
 }
 
 .fs-la {
@@ -432,6 +485,20 @@ h6 {
   font-size: x-large;
 }
 
+.h-font-i-1:hover {
+  background-color: var(--col-bg-1);
+  color: var(--col-pf-1);
+}
+
+.h-font-i-1:hover * {
+  background-color: var(--col-bg-1);
+  color: var(--col-pf-1);
+}
+
+.h-fw-l:hover {
+  font-weight: 500;
+}
+
 .h-font-l-1:active {
   color: var(--col-pf-1);
 }
@@ -485,4 +552,10 @@ h6 {
 
 .fa-c {
   align-items: center;
+}
+
+/* overflow */
+
+.ovfl-vis {
+  overflow: visible;
 }

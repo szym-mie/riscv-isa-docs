@@ -1,4 +1,6 @@
-import { range } from "./core/obj";
+import { range } from './core/obj';
+
+import './BitTable.css';
 
 const BitTable = (props) => {
   const columns = () => (createColumns(props.fields).toReversed());
@@ -11,16 +13,16 @@ const BitTable = (props) => {
         <thead>
           <tr class='index'>
             <For each={indices()}>
-              {(index, _) => (<td class='bd-p1'>{index}</td>)}
+              {(index, _) => (<td>{index}</td>)}
+            </For>
+          </tr>
+          <tr class='marker'>
+            <For each={indices()}>
+              {(_index, _) => (<td class="bd-p1-l bd-p1-r s-02-v"></td>)}
             </For>
           </tr>
         </thead>
         <tbody>
-          <tr class='marker'>
-            {/* <For each={columns()}>
-              {(index, _) => (<td class='bd-p1'>{index}</td>)}
-            </For> */}
-          </tr>
           <tr class='range'>
             <For each={columns()}>
               {({ id, start, width }, _) => (<td class='bd-p1' colspan={width}>{id}</td>)}
