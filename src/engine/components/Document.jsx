@@ -22,7 +22,7 @@ const Document = (props) => {
           <Index each={items(obj().authors)}>{createAuthor}</Index>
         </Section>
         <Section title='Instruction Sets' size='md' ref='#isas'>
-          <Index each={items(obj().modules)}>{createISA}</Index>
+          <Index each={items(obj().modules)}>{createModule}</Index>
         </Section>
       </Section>
     </>
@@ -39,7 +39,7 @@ const createAuthor = (it, _) => {
   return (<Author key={key()} obj={val()} />);
 };
 
-const createISA = (it, _) => {
+const createModule = (it, _) => {
   const [key, val] = kv(it());
   return (
     <Section title={val().name} size='md' ref={'#isas_' + key()} tab='2'>

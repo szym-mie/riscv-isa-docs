@@ -13,14 +13,19 @@ const Section = (props) => {
   const [_, tocSetEntries] = useTableOfContentsContext();
   const title = () => props.title;
   const margin = () => sectionIndents[props.tab || 0];
-  tocSetEntries.addEntry({
-    title: title(),
-    size: props.size
-  });
+
+  const tocAddEntry = (elem) => {
+    tocSetEntries.addEntry({
+      title: title(),
+      elem: elem,
+      size: props.size
+    });
+  };
+
 
   return (
     <>
-      <section id={props.ref}>
+      <section ref={tocAddEntry} id={props.ref}>
         <div class='row vo-05'>
           <Switch>
             <Match when={props.size === 'xl'}><h1 class='section-head'>{title()}</h1></Match>
