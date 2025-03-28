@@ -485,20 +485,6 @@ h6 {
   font-size: x-large;
 }
 
-.h-font-i-1:hover {
-  background-color: var(--col-bg-1);
-  color: var(--col-pf-1);
-}
-
-.h-font-i-1:hover * {
-  background-color: var(--col-bg-1);
-  color: var(--col-pf-1);
-}
-
-.h-fw-l:hover {
-  font-weight: 500;
-}
-
 .h-font-l-1:active {
   color: var(--col-pf-1);
 }
@@ -515,6 +501,18 @@ h6 {
 .h-font-l-2:active * {
   color: var(--col-tx-2);
 }
+
+
+.h-font-i-1:hover {
+  background-color: var(--col-tx-2);
+  color: var(--col-pf-1);
+}
+
+.h-font-i-1:hover * {
+  background-color: var(--col-tx-2);
+  color: var(--col-pf-1);
+}
+
 
 /* fixed position */
 
