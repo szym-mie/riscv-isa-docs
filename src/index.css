@@ -195,6 +195,20 @@ h6 {
   padding-bottom: 1em;
 }
 
+.sp-05 {
+  padding: 0.5em;
+}
+
+.sp-05-h {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.sp-05-v {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
 .sp-02 {
   padding: 0.2em;
 }

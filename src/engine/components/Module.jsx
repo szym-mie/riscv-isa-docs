@@ -1,10 +1,10 @@
 import { Index } from 'solid-js';
 import Section from './core/Section';
 import Meta from './Meta';
-import ISALayout from './ISALayout';
-import ISAInstruction from './ISAInstruction';
+import ModuleLayout from './ModuleLayout';
+import ModuleInstruction from './ModuleInstruction';
 
-const ISA = (props) => {
+const Module = (props) => {
   const key = () => props.key;
   const obj = () => props.obj;
   const layouts = () => obj().layouts;
@@ -30,7 +30,7 @@ const createLayout = (it, _) => {
   return (
     <Section title={it().name} size='sm' tab='2'>
       <Meta of={it()} />
-      <ISALayout obj={it()} />
+      <ModuleLayout obj={it()} />
     </Section>
   );
 };
@@ -39,9 +39,9 @@ const createInstruction = (it, _) => {
   return (
     <Section title={it().name} size='sm' tab='2'>
       <Meta of={it()} />
-      <ISAInstruction obj={it()} />
+      <ModuleInstruction obj={it()} />
     </Section>
   );
 };
 
-export default ISA;
+export default Module;

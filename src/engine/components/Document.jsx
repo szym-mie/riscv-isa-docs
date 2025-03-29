@@ -4,7 +4,7 @@ import Block from './core/Block';
 import Reference from './Reference';
 import Author from './Author';
 import Meta from './Meta';
-import ISA from './ISA';
+import Module from './Module';
 import { items, kv } from './core/obj';
 
 const Document = (props) => {
@@ -44,7 +44,7 @@ const createModule = (it, _) => {
   return (
     <Section title={val().name} size='md' ref={'#isas_' + key()} tab='2'>
       <Meta of={val()} />
-      <ISA key={key()} obj={val()} />
+      <Module key={key()} obj={val()} />
     </Section>
   );
 };

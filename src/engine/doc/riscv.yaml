@@ -36,6 +36,7 @@ modules:
     layouts:
       r_type: &layout_r_type
         name: R-type
+        _meta: {}
         fields:
           - id: opcode
             type: opcode
@@ -62,6 +63,7 @@ modules:
             range: [[25, 31]]
       i_type: &layout_i_type
         name: I-type
+        _meta: {}
         fields:
           - id: opcode
             type: opcode
@@ -84,6 +86,7 @@ modules:
             range: [[20, 31]]
       s_type: &layout_s_type
         name: S-type
+        _meta: {}
         fields:
           - id: opcode
             type: opcode
@@ -110,6 +113,7 @@ modules:
             range: [[25, 31]]
       b_type: &layout_b_type
         name: B-type
+        _meta: {}
         fields:
           - id: opcode
             type: opcode
@@ -169,46 +173,55 @@ modules:
     instructions:
       lui:
         name: Load Upper Immediate
-        info: ''
+        info: >
+          Load immediate value into register, so that the value resides in
+          upper 20 bits of this register and the rest of the register is filled
+          with zeroes.
         act:
           - rd = imm << 12
-        _meta: {}
         layout: *layout_u_type
         opcode: 0b0110111
       auipc:
         name: Add Upper Immediate to PC
-        info: ''
+        info: >
+          Add so called upper immediate (take 20-bit immediate and shift left
+          by 12) to the program counter.
         act:
           - rd = pc + (imm << 12)
-        _meta: {}
         layout: *layout_u_type
         opcode: 0b0010111
       jal:
         name: Jump and Link
-        info: ''
+        info: >
+          Jump to location offset by a signed 20-bit immediate, in
+          multiples of 2 (-1M:+1M).
         act:
-          - rd = pc+4
-          - pc = pc+imm
-        _meta: {}
+          - rd = pc + 4
+          - pc = pc + (imm << 1)
         layout: *layout_j_type
         opcode: 0b1101111
       jalr:
         name: Jump and Link Register
-        info: ''
+        info: >
+          Jump to location, using both source register and immediate.
+          The offset is calculated by adding signed immediate to the register
+          and reseting LSB (setting it to 0).
         act:
-          - rd = pc+4
-          - pc = rs1+imm
-        _meta: {}
+          - rd = pc + 4
+          - offset = rs1 + imm
+          - pc = {offset[31:1]|0}
         layout: *layout_i_type
         opcode: 0b1100111
         func:
           - 0b000
       beq:
         name: Branch Equal
-        info: ''
+        info: >
+          Take the branch if both registers are equal, else advance to next
+          instruction. Offset is signed, in multiples of 2 [-4K:+4K].
         act:
-          - if (rs1 == rs2) pc = pc+imm
-        _meta: {}
+          - if (rs1 == rs2) pc = pc + (imm << 1)
+          - else pc = pc + 4
         layout: *layout_b_type
         opcode: 0b1100011
         func:

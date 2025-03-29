@@ -2,10 +2,10 @@ import { range } from './core/obj';
 
 import './BitTable.css';
 
-const BitTable = (props) => {
-  const columns = () => (createColumns(props.fields).toReversed());
-  const indices = () => (range(0, size()).toReversed());
-  const size = () => columns().reduce((a, v) => a + v.width, 0);
+const LayoutBitTable = (props) => {
+  const columns = () => createColumns(props.layout);
+  const indices = () => createIndices(size());
+  const size = () => getSize(columns())
 
   return (
     <>
@@ -41,7 +41,9 @@ const BitTable = (props) => {
   );
 };
 
-const createColumns = (fields) => (fields.map((v) => createColumn(v)));
+const createColumns = (layout) => layout.fields
+  .map((v) => createColumn(v))
+  .toReversed();
 
 const createColumn = (field) => {
   const [rangeStart, rangeEnd] = field.range[0];
@@ -49,6 +51,10 @@ const createColumn = (field) => {
   const width = rangeEnd - rangeStart + 1;
   const start = rangeStart;
   return { id, start, width };
-}
+};
 
-export default BitTable;
+const createIndices = (size) => range(0, size).toReversed();
+
+const getSize = (columns) => columns.reduce((a, v) => a + v.width, 0);
+
+export default LayoutBitTable;
