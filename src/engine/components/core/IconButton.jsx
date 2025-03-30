@@ -12,7 +12,7 @@ const IconButton = (props) => {
       onMouseDown={handleClick()}
       onMouseEnter={handleHover()}
       onMouseLeave={handleOut()}>
-      <pre class={extraCSS('', props.font)}><Icon icon={props.icon} /></pre>
+      <Icon css={extraCSS('', props.font)} icon={props.icon} />
     </div>
   );
 }
